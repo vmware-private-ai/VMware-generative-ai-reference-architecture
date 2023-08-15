@@ -1,0 +1,27 @@
+nfd:
+  enabled: true
+sriovNetworkOperator:
+  enabled: false
+# NicClusterPolicy CR values:
+deployCR: true
+ofedDriver:
+  deploy: true
+
+rdmaSharedDevicePlugin:
+  deploy: true
+  imagePullSecrets: [ngc-image-secret]
+
+sriovDevicePlugin:
+  deploy: true
+  imagePullSecrets: [ngc-image-secret]
+  resources:
+    - name: hostdev
+      vendors: [15b3]
+secondaryNetwork:
+  deploy: true
+  multus:
+    deploy: true
+  cniPlugins:
+    deploy: true
+  ipamPlugin:
+    deploy: true

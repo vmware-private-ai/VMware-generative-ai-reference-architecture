@@ -1,0 +1,61 @@
+apiVersion: run.tanzu.vmware.com/v1alpha3
+kind: TanzuKubernetesCluster
+metadata:
+  name: tkctest
+  namespace: vmware-ref-arch
+  annotations:
+    run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu
+spec:
+   topology:
+     controlPlane:
+       replicas: 3
+       storageClass: tanzu-storage-policy
+       vmClass: guaranteed-large
+       tkr:
+         reference:
+           name: v1.24.9---vmware.1-mlops
+       volumes:
+       - name: etcd
+         mountPath: /var/lib/etcd
+         capacity:
+           storage: 4Gi
+     nodePools:
+     - name: nodepool-a100-passthrough
+       replicas: 0
+       storageClass: tanzu-storage-policy
+       vmClass: gpu-small-passthrough
+       tkr:
+         reference:
+           name: v1.24.9---vmware.1-mlops
+       volumes:
+       - name: containerd
+         mountPath: /var/lib/containerd
+         capacity:
+           storage: 70Gi
+       - name: kubelet
+         mountPath: /var/lib/kubelet
+         capacity:
+           storage: 70Gi
+     - name: nodepool-a100-vgpu-vf
+       replicas: 1
+       storageClass: tanzu-storage-policy
+       vmClass: gpu-large-vgpu
+       tkr:
+         reference:
+           name: v1.24.9---vmware.1-mlops
+       volumes:
+       - name: containerd
+         mountPath: /var/lib/containerd
+         capacity:
+           storage: 500Gi
+       - name: kubelet
+         mountPath: /var/lib/kubelet
+         capacity:
+           storage: 70Gi
+       - name: docker
+         mountPath: /var/lib/docker
+         capacity:
+           storage: 500Gi
+   settings:
+     storage:
+       defaultClass: tanzu-storage-policy
