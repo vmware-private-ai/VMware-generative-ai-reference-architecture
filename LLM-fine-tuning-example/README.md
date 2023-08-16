@@ -22,7 +22,8 @@ For more details about the configuration steps on vSphere to use NVIDA GPUs, ple
 
 ### Installing CUDA 11.8
 
-First you need to install the NVIDIA driver for Ubuntu 22.04. From the graphical interface, launch the `Software and Updtes` application. Select the
+First you need to install the NVIDIA driver for Ubuntu 22.04. 
+- From the graphical interface, launch the `Software and Updtes` application. Select the
 `Additional Drivers` tab and from the `NVIDIA Corporation` section pick the driver that is labeled as `(propietary, tested)`. When building this 
 working example, we picked driver 535. After selecting the driver the system will get reconfigured. Even if you're no asked to do so, it 
 is convenient to reboot the OS with the command:

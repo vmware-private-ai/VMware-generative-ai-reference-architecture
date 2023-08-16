@@ -11,7 +11,7 @@ This repository intends to provide readers with examples so they can more easily
 The repository is organized by the following structure:<br>
 - The `vSphere-and-TKG-config-files` directory provides configuration files to setup the Tanzu Kubernetes Cluster, NVIDIA GPUs and Network Kubernetes Operators
   that provide hardware acceleration services to VMware Tanzu Kubernetes clusters.
-- The `LLM-fine-tuning-example` provides the steps to configure a Python virtual environment suitable for LLM fine-tuning tasks based on a series of 
+- The `LLM-fine-tuning-example` directory provides the steps to configure a Python virtual environment suitable for LLM fine-tuning tasks based on a series of 
 [Hugging Face](https://huggingface.co/) libraries. It also includes a Python notebook that illustrates all the steps required to fine-tune
 the [Falcon LLMs](https://falconllm.tii.ae/) on a custom dataset to teach the model to follow instructions.
 - The `LLM-serving-wt-vLLM-and-RayServe-example`directory provides the configuration steps, the configuration files, and the Python
