@@ -22,7 +22,7 @@ scripts to setup a Ray cluster that serves the Falcon LLMs via [vLLM](https://gi
 ## Contributing
 
 The VMware-generative-ai-reference-architecture project team welcomes contributions from the community. Before you start working with VMware-generative-ai-reference-architecture, please
-read our [Contributor License Agreements](https://cla.vmware.com/cla/1/preview). All contributions to this repository must be
+read our [Contributor License Agreement](https://cla.vmware.com/cla/1/preview). All contributions to this repository must be
 signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on
 as an open-source patch. For more detailed information, refer to [CONTRIBUTING.md](CONTRIBUTING_CLA.md).
 
