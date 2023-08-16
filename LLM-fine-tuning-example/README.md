@@ -121,7 +121,7 @@ sudo apt update
 sudo apt install git
 
 # Clone the git repo containing the fine-tune Jupyter notebook
-git clone https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture.gi
+git clone https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture.git
 
 # Enter the fine-tune example directory
 cd VMware-generative-ai-reference-architecture/LLM-fine-tuning-example/
