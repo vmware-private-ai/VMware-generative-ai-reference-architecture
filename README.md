@@ -3,7 +3,7 @@
 ## Overview
 
 This repository contains a series of configuration files and Python scripts that serve as a complement to the
-white paper<br>[Deploying Enterprise-Ready Generative AI on VMware Cloud Foundation]( https://core.vmware.com/resource/deploying-enterprise-ready-generative-ai-vmware-cloud-foundation) .
+white paper [Deploying Enterprise-Ready Generative AI on VMware Cloud Foundation]( https://core.vmware.com/resource/deploying-enterprise-ready-generative-ai-vmware-cloud-foundation) .
 
 This repository intends to provide readers with examples so they can more easily reproduce the VMware infrastructure configuration. The repository also includes a series of Python scripts and notebooks that provide working examples about the Large Language Model (LLM) fine-tuning and inference tasks.
 
