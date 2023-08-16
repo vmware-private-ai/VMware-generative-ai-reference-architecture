@@ -16,15 +16,75 @@ We will assume that you already have an [Ubuntu 22.04 LTS Desktop](https://ubunt
 - 500GB of disk storage. Notice that the more model checkpoints you decide to keep, the more storage space you will need.
 - Internet connectivity to download software packages, LLM models and datasets.
 
-For more details about the configuration steps on vSphere to use NVIDA GPUs, please refer to LINK.
+For more details about the configuration steps on vSphere to use NVIDA GPUs, please refer to [Configuring Virtual Graphics in vSphere](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-74A657D9-52F7-4F92-AB86-9039A90A028D.html)
 
 ## 3. Python environment setup
 
-We recommend the use of [Miniconda](https://docs.conda.io/en/latest/miniconda.html) as the Python package management system over the default distributions embedded in the OS. Here the shell commands you need to run to setup a Python environment.
+### Installing CUDA 11.8
+
+First you need to install the NVIDIA driver for Ubuntu 22.04. From the graphical interface, launch the `Software and Updtes` application. Select the
+`Additional Drivers` tab and from the `NVIDIA Corporation` section pick the driver that is labeled as `(propietary, tested)`. When building this 
+working example, we picked driver 535. After selecting the driver the system will get reconfigured. Even if you're no asked to do so, it 
+is convenient to reboot the OS with the command:
+```azure
+reboot
+```
+
+Next, you need to download the CUDA 11.8 toolkit and install it. Follow the next steps:
+
+````
+# Download the binaries for Ubuntu 22.04
+wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+
+# Execute the run file
+sudo sh cuda_11.8.0_520.61.05_linux.run
+````
+The CLI command will start a text-based dialog interface. You will get a warming like this:
+````
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ Existing package manager installation of the driver found. It is strongly    │
+│ recommended that you remove this before continuing.                          │
+│ Abort                                                                        │
+│ Continue                                                                     │
+│                                                                              │
+````
+Using the keyboard arrows, select `Continue` and hit `Enter`. Next, you need to accept the EULA to continue.
+````
+Do you accept the above EULA? (accept/decline/quit):                         │
+  │ accept 
+````
+Then use the keyboard to move down the screen and using the space bar, deselect the `Driver`, the `CUDA Demo Suite` and the `CUDA documentation`. Then move to the `Install`
+option and hit `Enter` as shown next.
+````
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ CUDA Installer                                                               │
+│ - [ ] Driver                                                                 │
+│      [ ] 520.61.05                                                           │
+│ + [X] CUDA Toolkit 11.8                                                      │
+│   [ ] CUDA Demo Suite 11.8                                                   │
+│   [ ] CUDA Documentation 11.8                                                │
+│ - [ ] Kernel Objects                                                         │
+│      [ ] nvidia-fs                                                           │
+│   Options                                                                    │
+│   Install                                                                    │
+│                                                                              │
+│ Up/Down: Move | Left/Right: Expand | 'Enter': Select | 'A': Advanced options │
+└──────────────────────────────────────────────────────────────────────────────┘
+````
+Once the installer finishes, add a new line to `/etc/ld.so.conf` with the `/usr/local/cuda-11.8/lib64` entry an run:
+````azure
+sudo ldconfig
+````
+CUDA will get installed under `/usr/local`
+````azure
+ls /usr/local
+# cuda  cuda-11.8  etc  games  include  lib  man  sbin  share  src
+````
 
 ### Miniconda installation steps.
 
-From a Linux terminal, run the following commands.
+We recommend the use of [Miniconda](https://docs.conda.io/en/latest/miniconda.html) as the Python package management system over the default 
+distributions embedded in the OS. Here the shell commands you need to run to setup a Python environment.<br>
 
 ```shell
 ## Installing Miniconda
@@ -53,21 +113,17 @@ Let's clone the git repository for the Jupyter notebook that contains the LLM fi
 ## Cloning the git repo
 
 # Verify git is installed
-
 git --version
 
 # If git is not installed, pleade install it with these two commands
-
 sudo apt update
 sudo apt install git
 
 # Clone the git repo containing the fine-tune Jupyter notebook
+git clone https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture.gi
 
-git clone https://gitlab.eng.vmware.com/ecorro/falcon-llms-fine-tuning-example.git
-
-# Enter the repo's root directory
-
-cd falcon-llms-fine-tuning-example/
+# Enter the fine-tune example directory
+cd VMware-generative-ai-reference-architecture/LLM-fine-tuning-example/
 ```
 
 Then run the following commands to create a conda virtual environment:
