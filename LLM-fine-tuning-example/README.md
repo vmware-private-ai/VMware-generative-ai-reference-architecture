@@ -2,21 +2,32 @@
 
 ## 1. Introduction to fine-tuning task.
 
-The open-source community keeps releasing new LLMs, such as [Falcon-40B](https://huggingface.co/tiiuae/falcon-40b) and [Falcon-7B](https://huggingface.co/tiiuae/falcon-7b), which at the time of this writing rank at the top of the [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard?_hsenc=p2ANqtz-865CMxeXG2eIMWb7rFgGbKVMVqV6u6UWP8TInA4WfSYvPjc6yOsNPeTNfS_m_et5Atfjyw). This working example will guide how to finetune these models on a specific dataset and use tuned model for prompt completion by using one or two mid-range GPUs.
+The open-source community keeps releasing new LLMs, such as [Falcon-40B](https://huggingface.co/tiiuae/falcon-40b) 
+and [Falcon-7B](https://huggingface.co/tiiuae/falcon-7b), which at the time of this writing rank at the top of the
+[Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard?_hsenc=p2ANqtz-865CMxeXG2eIMWb7rFgGbKVMVqV6u6UWP8TInA4WfSYvPjc6yOsNPeTNfS_m_et5Atfjyw). 
+This working example will guide how to finetune these models on a specific dataset and use tuned model for prompt 
+completion by using one or two mid-range GPUs.
 
-As a complementary resource we have published a GitHub repo that provides the Python code required to finetune Falcon-7B using a single A100 (40G) GPU and Falcon-40B on two of those GPUs by using HugginFace's implementation of [LoRA](https://huggingface.co/docs/peft/conceptual_guides/lora) (part of the [PEFT](https://huggingface.co/docs/peft/index) package) and the [bits and bytes](https://github.com/TimDettmers/bitsandbytes) library (by [Tim Dettmers](https://github.com/TimDettmers)) to load the models using 8-bit or 4-bit quantization numeric precision.
+As a complementary resource we have published a GitHub repo that provides the Python code required to finetune 
+Falcon-7B using a single A100 (40G) GPU and Falcon-40B on two of those GPUs by using 
+Hugging Face's implementation of [LoRA](https://huggingface.co/docs/peft/conceptual_guides/lora) (part 
+of the [PEFT](https://huggingface.co/docs/peft/index) package) and the 
+[bits and bytes](https://github.com/TimDettmers/bitsandbytes) library 
+(by [Tim Dettmers](https://github.com/TimDettmers)) to load the models using 8-bit or 4-bit quantization numeric precision.
 
 ## 2. Requirements
 
 We will assume that you already have an [Ubuntu 22.04 LTS Desktop](https://ubuntu.com/desktop) ready with the following minimum requirements:
 
-- 1 or 2 NVIDIA A100 (40GB) GPUs attached either as vGPU or DirectPath I/O devices. You can use other NVIDIA GPUs will less memory but that might limit the size of the model you'll be able to load.
+- 1 or 2 NVIDIA A100 (40GB) GPUs attached either as vGPU or DirectPath I/O devices. You can use other NVIDIA GPUs will
+- less memory but that might limit the size of the model you'll be able to load.
 - 64GB or RAM
 - 16 vCPU
 - 500GB of disk storage. Notice that the more model checkpoints you decide to keep, the more storage space you will need.
 - Internet connectivity to download software packages, LLM models and datasets.
 
-For more details about the configuration steps on vSphere to use NVIDA GPUs, please refer to [Configuring Virtual Graphics in vSphere](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-74A657D9-52F7-4F92-AB86-9039A90A028D.html)
+For more details about the configuration steps on vSphere to use NVIDIA GPUs, please refer to 
+[Configuring Virtual Graphics in vSphere](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-74A657D9-52F7-4F92-AB86-9039A90A028D.html)
 
 ## 3. Python environment setup
 
@@ -24,9 +35,10 @@ For more details about the configuration steps on vSphere to use NVIDA GPUs, ple
 
 First you need to install the NVIDIA driver for Ubuntu 22.04. 
 - From the graphical interface, launch the `Software and Updtes` application. Select the
-`Additional Drivers` tab and from the `NVIDIA Corporation` section pick the driver that is labeled as `(propietary, tested)`. When building this 
-working example, we picked `driver 535`. After selecting the driver, the system will get reconfigured. Even if you're no asked to do so, it 
-is convenient to reboot the OS with the command:
+`Additional Drivers` tab and from the `NVIDIA Corporation` section pick the driver that is labeled as 
+- `(propietary, tested)`. When building this 
+working example, we picked `driver 535`. After selecting the driver, the system will get reconfigured. Even if you are
+- not asked to do so, it is convenient to reboot the OS with the command:
 ```azure
 reboot
 ```
@@ -54,8 +66,8 @@ Using the keyboard arrows, select `Continue` and hit `Enter`. Next, you need to 
 Do you accept the above EULA? (accept/decline/quit):                         │
   │ accept 
 ````
-Then use the keyboard to move down the screen and using the space bar, deselect the `Driver`, the `CUDA Demo Suite` and the `CUDA documentation`. Then move to the `Install`
-option and hit `Enter` as shown next.
+Then use the keyboard to move down the screen and using the space bar, deselect the `Driver`, the `CUDA Demo Suite` and 
+the `CUDA documentation`. Then move to the `Install`option and hit `Enter` as shown next.
 ````
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │ CUDA Installer                                                               │
@@ -72,7 +84,7 @@ option and hit `Enter` as shown next.
 │ Up/Down: Move | Left/Right: Expand | 'Enter': Select | 'A': Advanced options │
 └──────────────────────────────────────────────────────────────────────────────┘
 ````
-Once the installer finishes, add a new line to `/etc/ld.so.conf` with the `/usr/local/cuda-11.8/lib64` entry an run:
+Once the installer finishes, add a new line to `/etc/ld.so.conf` with the `/usr/local/cuda-11.8/lib64` entry and run:
 ````azure
 sudo ldconfig
 ````
@@ -84,8 +96,9 @@ ls /usr/local
 
 ### Miniconda installation steps.
 
-We recommend the use of [Miniconda](https://docs.conda.io/en/latest/miniconda.html) as the Python package management system over the default 
-distributions embedded in the OS. Here the shell commands you need to run to setup a Python environment.<br>
+We recommend the use of [Miniconda](https://docs.conda.io/en/latest/miniconda.html) as the Python package management 
+system over the default distributions embedded in the OS. Here the shell commands you need to run to set up a Python 
+environment.<br>
 
 ```shell
 ## Installing Miniconda
@@ -155,4 +168,7 @@ wandb login
 jupyter-lab
 ```
 
-Next, your web browser will show a JupyterLab session like the one shown next. Double click on the `Notebook-Falcon-finetune.ipynb` file to open the notebook and get ready to go over the Falcon LLM fine-tune process. Once the notebook is open you may follow the notebook annotations which explain the LLM fine-tune process and the role of each component of it.
+Next, your web browser will show a JupyterLab session like the one shown next. Double-click on 
+the `Notebook-Falcon-finetune.ipynb` file to open the notebook and get ready to go over the Falcon LLM fine-tune 
+process. Once the notebook is open you may follow the notebook annotations which explain the LLM fine-tune process 
+and the role of each component of it.
