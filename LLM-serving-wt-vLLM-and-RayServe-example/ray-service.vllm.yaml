@@ -8,7 +8,7 @@ spec:
   serveConfigV2: |
     applications:
       - name: vllm
-        import_path: vllm_falcon_7b:deployment
+        import_path: LLM-serving-wt-vLLM-and-RayServe-example.vllm_falcon_7b:deployment
         runtime_env:
           working_dir: "https://github.com/vecorro/vllm_examples/archive/refs/heads/main.zip"
           pip: ["vllm==0.1.3"]
