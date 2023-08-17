@@ -46,7 +46,7 @@ kubectl get pods
 ````
 - Pull the ray-service.vllm.yaml manifest (from this repo) from the GitHub repo raw URL.
 ```` 
-wget -L https://raw.githubusercontent.com/vecorro/vllm_examples/main/ray-service.vllm.yaml
+wget -L https://raw.githubusercontent.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/main/LLM-serving-wt-vLLM-and-RayServe-example/ray-service.vllm.yaml
 ````
 - Create a Ray Serve cluster using the manifest
 ````
@@ -89,8 +89,8 @@ Ray cluster dashboard to monitor the Ray cluster status and activity.
 - The `ray-service.vllm.yaml` manifest has a section that defines the vLLM service deployment:
 ````
 spec:
-  serviceUnhealthySecondThreshold: 3600 # Config for the health check threshold for service. Default value is 60.
-  deploymentUnhealthySecondThreshold: 3600 # Config for the health check threshold for deployments. Default value is 60.
+  serviceUnhealthySecondThreshold: 1800 # Config for the health check threshold for service. Default value is 60.
+  deploymentUnhealthySecondThreshold: 1800 # Config for the health check threshold for deployments. Default value is 60.
   serveConfigV2: |
     applications:
       - name: vllm
