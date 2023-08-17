@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostdev-test-pod
+  annotations:
+    k8s.v1.cni.cncf.io/networks: hostdev-net
+spec:
+  restartPolicy: OnFailure
+  containers:
+  - image: mellanox/cuda-perftest:latest
+    name: mofed-test-ctr
+    securityContext:
+      capabilities:
+        add: [ "IPC_LOCK" ]
+    resources:
+      requests:
+        nvidia.com/hostdev: 1
+        nvidia.com/gpu: 1
+      limits:
+        nvidia.com/hostdev: 1
+        nvidia.com/gpu: 1
+    command:
+    - sh
+    - -c
+    - sleep inf
