@@ -13,36 +13,20 @@ spec:
        vmClass: guaranteed-large
        tkr:
          reference:
-           name: v1.24.9---vmware.1-mlops
+           name: v1.24.9---vmware.1
        volumes:
        - name: etcd
          mountPath: /var/lib/etcd
          capacity:
            storage: 4Gi
      nodePools:
-     - name: nodepool-a100-passthrough
-       replicas: 0
-       storageClass: tanzu-storage-policy
-       vmClass: gpu-small-passthrough
-       tkr:
-         reference:
-           name: v1.24.9---vmware.1-mlops
-       volumes:
-       - name: containerd
-         mountPath: /var/lib/containerd
-         capacity:
-           storage: 70Gi
-       - name: kubelet
-         mountPath: /var/lib/kubelet
-         capacity:
-           storage: 70Gi
      - name: nodepool-a100-vgpu-vf
-       replicas: 1
+       replicas: 4
        storageClass: tanzu-storage-policy
-       vmClass: gpu-large-vgpu
+       vmClass: gpu-xlarge-vgpu-vf
        tkr:
          reference:
-           name: v1.24.9---vmware.1-mlops
+           name: v1.24.9---vmware.1
        volumes:
        - name: containerd
          mountPath: /var/lib/containerd
