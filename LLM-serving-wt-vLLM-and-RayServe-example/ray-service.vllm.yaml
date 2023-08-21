@@ -10,7 +10,7 @@ spec:
       - name: vllm
         import_path: LLM-serving-wt-vLLM-and-RayServe-example.vllm_falcon_7b:deployment
         runtime_env:
-          working_dir: "https://github.com/vecorro/vllm_examples/archive/refs/heads/main.zip"
+          working_dir: "https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/archive/refs/heads/main.zip"
           pip: ["vllm==0.1.3"]
   rayClusterConfig:
     rayVersion: '2.6.2' # Should match the Ray version in the image of the containers
