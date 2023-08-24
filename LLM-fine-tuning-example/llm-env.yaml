@@ -21,3 +21,4 @@ dependencies:
     - ipywidgets
     - widgetsnbextension
     - langchain==0.0.266
+    - xformers==0.0.21
