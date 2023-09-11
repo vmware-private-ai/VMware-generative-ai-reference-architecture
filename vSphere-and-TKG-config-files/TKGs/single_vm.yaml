@@ -1,0 +1,55 @@
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachine
+metadata:
+  name: genai-fine-tunning-vm
+  namespace: genai-ns
+  labels:
+    app: vmsvc
+spec:
+  imageName: ubuntu-20.04-vgpu
+#Run 'kubectl get vmclass VM_CLASS_NAME -o yaml' to verify it has vGPU configured
+  className: single-vm-gpu
+  powerState: poweredOn
+  storageClass: tanzu-storage-policy
+  networkInterfaces:
+  - networkName: ""
+    networkType: nsx-t
+# if using vSphere Distributed Switch, use the definition below and comment out the section above
+  #- networkName: "workload-segment"
+  #  networkType: vsphere-distributed
+  volumes:
+  - name: myRootDisk
+    vSphereVolume:
+      deviceKey: 2000
+      capacity:
+        ephemeral-storage: "1024Gi"
+  vmMetadata:
+      configMapName: vmsvc-ubuntu-vgpu-cm
+      transport: OvfEnv
+---
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachineService
+metadata:
+  name: vm-basic-ssh
+  namespace: genai-ns
+spec:
+  selector:
+    app: vmsvc
+  type: LoadBalancer
+  ports:
+  - name: ssh
+    port: 22
+    protocol: TCP
+    targetPort: 22
+  - name: jupyter
+    port: 8888
+    protocol: TCP
+    targetPort: 8888
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: vmsvc-ubuntu-vgpu-cm
+    namespace: genai-ns
+data:
+  user-data: I2Nsb3VkLWNvbmZpZwp1c2VyczoKIC0gZGVmYXVsdAogLSBuYW1lOiB2bXdhcmUgCiAgIHN1ZG86IEFMTD0oQUxMKSBOT1BBU1NXRDpBTEwKICAgbG9ja19wYXNzd2Q6IGZhbHNlCiAgIHBhc3N3ZDogJyQ2JEhCRHZzSXZvemQvZC9RYXAkUmhiRUJ2UEprM3d6ekRoOXlLQXhaeUZyUVNRMkJsM2RPUlJ2SFlDSWR0bExrSkx3cmI1Vk0wUnpuMG9tRnY5aWVGd0hTQnB4N1YyN2V6NXBUVkhyZi8nCiAgIHNoZWxsOiAvYmluL2Jhc2gKc3NoX3B3YXV0aDogdHJ1ZQo= 
