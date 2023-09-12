@@ -46,6 +46,7 @@ spec:
     protocol: TCP
     targetPort: 8888
 ---
+# this config map creates credential vmware/vmware
 apiVersion: v1
 kind: ConfigMap
 metadata:
