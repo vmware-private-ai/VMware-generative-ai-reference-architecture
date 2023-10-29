@@ -5,20 +5,33 @@ channels:
 dependencies:
   - python=3.10
   - scipy
+  - pytorch==2.0.1
+  - torchvision==0.15.2
   - pytorch-cuda=11.8
   - jupyterlab
   - pip
 
   - pip:
-    - wandb
-    - transformers==4.31.0
-    - datasets==2.14.4
-    - bitsandbytes==0.41.1
-    - peft==0.4.0
-    - accelerate==0.21.0
-    - einops==0.6.1
-    - trl==0.5.0
-    - ipywidgets
-    - widgetsnbextension
-    - langchain==0.0.266
-    - xformers==0.0.21
+      - transformers==4.34.0
+      - datasets==2.14.5
+      - bitsandbytes==0.41.1
+      - peft==0.5.0
+      - accelerate==0.23.0
+      - einops==0.7.0
+      - trl==0.7.0
+      - ipywidgets
+      - widgetsnbextension
+      - langchain==0.0.325
+      - langchainhub==0.1.13
+      - xformers==0.0.22
+      - sentencepiece==0.1.99
+      - gradio==3.47.1
+      - openai==0.28.1
+      - vllm==0.2.0
+      - triton==2.0.0
+      - fschat==0.2.31
+      - tiktoken==0.5.1
+      - chromadb==0.4.14
+      - sentence-transformers==2.2.2
+      - pypdf==3.16.4
+      - wandb
