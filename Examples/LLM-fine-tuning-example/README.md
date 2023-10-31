@@ -137,7 +137,7 @@ sudo apt install git
 git clone https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture.git
 
 # Enter the fine-tune example directory
-cd VMware-generative-ai-reference-architecture/LLM-fine-tuning-example/
+cd Examples/VMware-generative-ai-reference-architecture/LLM-fine-tuning-example/
 ```
 
 Then run the following commands to create a conda virtual environment:
