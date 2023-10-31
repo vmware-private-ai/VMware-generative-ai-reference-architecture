@@ -21,7 +21,7 @@ dependencies:
       - trl==0.7.0
       - ipywidgets
       - widgetsnbextension
-      - langchain==0.0.325
+      - langchain==0.0.326
       - langchainhub==0.1.13
       - xformers==0.0.22
       - sentencepiece==0.1.99
