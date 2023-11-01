@@ -4,6 +4,7 @@ This folder contains three examples Jupyter notebooks that gradually introduce t
 Generation (RAG)** system, starting from creating a conversation application that evolves into a complete RAG generation chain.
 
 We use the following open-source technologies to implement the examples:
+- [LLama 2 13b Chat](https://huggingface.co/meta-llama/Llama-2-13b-chat-hf). Llama 2 is a collection of pretrained and fine-tuned generative text models ranging in scale from 7 billion to 70 billion parameters. This is the repository for the 13B fine-tuned model, optimized for dialogue use cases and converted for the Hugging Face Transformers format.
 - [vLLM](https://vllm.readthedocs.io/en/latest/) is a fast and easy-to-use library for LLM inference and serving. vLLM is a quick and user-friendly library designed for LLM inference and deployment. In this instance, we utilize the VLLMOpenAI class from LangChain to interact with the vLLM service that is compatible with OpenAI's API.
 - [Gradio](https://www.gradio.app/) provides a swift means to showcase machine learning models through an accessible web interface.
 - [Langchain](https://python.langchain.com/) is a framework for the fast prototyping of applications powered by language models. Langchain links and coordinates actions between LLMs, data retrievers, and memory systems to expand the knowledge domain of LLMs beyond the datasets used to pre-train and fine-tune them.
