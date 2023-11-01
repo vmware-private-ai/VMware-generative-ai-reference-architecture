@@ -9,8 +9,6 @@ We use the following open-source technologies to implement the examples:
 - [Gradio](https://www.gradio.app/) provides a swift means to showcase machine learning models through an accessible web interface.
 - [Langchain](https://python.langchain.com/) is a framework for the fast prototyping of applications powered by language models. Langchain links and coordinates actions between LLMs, data retrievers, and memory systems to expand the knowledge domain of LLMs beyond the datasets used to pre-train and fine-tune them.
 
-The directory structure goes as follows:
-
 # Folder structure
 ### Under the `chatbot` directory:
 
