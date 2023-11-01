@@ -12,17 +12,17 @@ We use the following open-source technologies to implement the examples:
 # Folder structure
 ### Under the `chatbot` directory:
 
-**e1) Implementing a chatbot with LLama 2 Chat (13B) served by vLLM and through the Gradio UI.**
+**e1) Implementing a chatbot with Llama-2-13b-chat served by vLLM, through the Gradio UI**
 
 The `e1-Llama2-chatbot-on-vLLM-with-Gradio.ipynb` notebook implements a chatbot using LLama 2 Chat (13B) LLM served by vLLM. The Gradio UI handles the user interactions with the chatbot from a web browser. In this notebook, we discuss how to format prompts for Llama 2 properly. We also discuss leveraging Gradio's memory mechanisms to keep track of a conversation between the LLM (chatbot) and the user. Finally, we put together the Gradio elements required to implement a web UI that users can use to control the LLM generation parameters and submit prompts for completion.
 
-**e2) Implementing a chatbot using LLama 2 Chat (13B) served by vLLM using LangChain and the Gradio UI.**
+**e2) Implementing a chatbot using Llama-2-13b-chat, vLLM, LangChain, and the Gradio UI**
 
 The `e2-Llama2-chatbot-vLLM-Langchain-Gradio.ipynb` notebook introduces the fundamental LangChain constructs required to implement a conversation chain (LLMChain) with memory (via the ConversationBufferMemory class) and the different prompt template types that get combined to prompt LLama 2 in proper and diverse ways.
 
 ### Under the `chatbot-with-RAG` directory:
 
-**e3) Implementing a chatbot with Retrieval-Augmented Generation (RAG) using LLama 2 Chat (13B), vLLM, LangChain, and the Gradio UI.**
+**e3) Implementing a chatbot with Retrieval-Augmented Generation (RAG) using Llama-2-13b-chat, vLLM, LangChain, and the Gradio UI**
 
 The `e3-RAG-Llama2-chatbot-vLLM-Langchain-Gradio.ipynb` introduces the components required to build a RAG system; these are:
 
