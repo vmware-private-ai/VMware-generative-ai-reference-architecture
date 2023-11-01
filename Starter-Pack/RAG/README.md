@@ -33,5 +33,3 @@ The `e3-RAG-Llama2-chatbot-vLLM-Langchain-Gradio.ipynb` introduces the component
 - `Retrievers` are vector databases containing the embeddings resulting from the document encoding process. When a user enters a query, the retriever will pull all the document chunks that are semantically related to the question.
 - The `LLM service` will use the context provided by the retriever to answer users' questions.
 - The `RetrievalQA` chain is a `LangChain` class that brings all the previous components together into a single entity (object) capable of accepting users' queries and feeding the LLM with the data required to generate the answer.
-
-- 
