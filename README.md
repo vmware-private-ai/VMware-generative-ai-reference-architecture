@@ -16,7 +16,7 @@ The repository is organized by the following structure:<br>
 directory provides __the steps to configure a Python virtual environment suitable for LLM fine-tuning tasks__ based on a series of 
 [Hugging Face](https://huggingface.co/) libraries. It also includes a Python notebook that illustrates all the steps required to fine-tune
 the [Falcon LLMs](https://falconllm.tii.ae/) on a custom dataset to teach the model to follow instructions.
-- The [LLM-serving-wt-vLLM-and-RayServe-example](https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/tree/main/Examples/LLM-serving-wt-vLLM-and-RayServe-example) directory provides the configuration steps, the configuration files, and the Python
+- The [Examples/LLM-serving-wt-vLLM-and-RayServe-example](https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/tree/main/Examples/LLM-serving-wt-vLLM-and-RayServe-example) directory provides the configuration steps, the configuration files, and the Python
 scripts to set a Ray cluster that serves the Falcon LLMs via [vLLM](https://github.com/vllm-project/vllm) running as a 
 [Ray Serve](https://docs.ray.io/en/latest/serve/index.html) application. The Ray cluster gets deployed on Tanzu Kubernetes using
 [Kuberay](https://github.com/ray-project/kuberay).
