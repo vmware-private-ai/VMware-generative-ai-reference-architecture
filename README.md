@@ -2,25 +2,28 @@
 
 ## Overview
 
-This repository contains a series of configuration files and Python scripts that serve as a complement to the
-white paper [Deploying Enterprise-Ready Generative AI on VMware Cloud Foundation]( https://core.vmware.com/resource/deploying-enterprise-ready-generative-ai-vmware-cloud-foundation).
-
-This repository intends to provide readers with examples to more easily test VMware infrastructure configurations designed to run for generative AI workloads. The repository also includes a series of Python scripts and notebooks that provide working examples about the Large Language Model (LLM) fine-tuning and inference tasks.
+This repository contains a series of Python scripts and configuration files that serve as a complement to the
+white paper [Deploying Enterprise-Ready Generative AI on VMware Cloud Foundation](https://core.vmware.com/resource/deploying-enterprise-ready-generative-ai-vmware-cloud-foundation)
 
 ## Disclaimer
 The scripts provided in this repository are intended to be used for educational purposes but not for production applications. Be aware that LLMs pose inherent vulnerabilities and risks, as illustrated by the [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). We strongly encourage customers to pay attention to OWASP guidance and the [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) to build safe and robust AI systems.
 
 ## Directory Structure<br>
 The repository is organized by the following structure:<br>
-- The `vSphere-and-TKG-config-files` directory provides configuration files to set the Tanzu Kubernetes Cluster, NVIDIA GPUs, and Network Kubernetes Operators
+- The [vSphere-and-TKG-config-files](https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/tree/main/vSphere-and-TKG-config-files) directory provides configuration files to set the Tanzu Kubernetes Cluster, NVIDIA GPUs, and Network Kubernetes Operators
   that provide hardware acceleration services to VMware Tanzu Kubernetes clusters.
-- The `LLM-fine-tuning-example` directory provides the steps to configure a Python virtual environment suitable for LLM fine-tuning tasks based on a series of 
+- The [Examples/LLM-fine-tuning-example](https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/tree/main/Examples/LLM-fine-tuning-example) 
+directory provides __the steps to configure a Python virtual environment suitable for LLM fine-tuning tasks__ based on a series of 
 [Hugging Face](https://huggingface.co/) libraries. It also includes a Python notebook that illustrates all the steps required to fine-tune
 the [Falcon LLMs](https://falconllm.tii.ae/) on a custom dataset to teach the model to follow instructions.
-- The `LLM-serving-wt-vLLM-and-RayServe-example` directory provides the configuration steps, the configuration files, and the Python
+- The [LLM-serving-wt-vLLM-and-RayServe-example](https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/tree/main/Examples/LLM-serving-wt-vLLM-and-RayServe-example) directory provides the configuration steps, the configuration files, and the Python
 scripts to set a Ray cluster that serves the Falcon LLMs via [vLLM](https://github.com/vllm-project/vllm) running as a 
 [Ray Serve](https://docs.ray.io/en/latest/serve/index.html) application. The Ray cluster gets deployed on Tanzu Kubernetes using
 [Kuberay](https://github.com/ray-project/kuberay).
+- We also include __Starter Packs__ which provide code examples about the implementation of the following use cases:
+  - [Retrieval-augmented generation (RAG)](https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/tree/main/Starter-Pack/RAG)
+  - [AI coding assistance (via StarCoder)](https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/tree/main/Starter-Pack/SafeCoder)
+
 
 ## Contributing
 
