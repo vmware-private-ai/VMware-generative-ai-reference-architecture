@@ -46,7 +46,7 @@ kubectl get pods
 ````
 - Pull the ray-service.vllm.yaml manifest (from this repo) from the GitHub repo raw URL.
 ```` 
-wget -L https://raw.githubusercontent.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/main/LLM-serving-wt-vLLM-and-RayServe-example/ray-service.vllm.yaml
+wget -L https://raw.githubusercontent.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/main/Examples/LLM-serving-wt-vLLM-and-RayServe-example/ray-service.vllm.yaml
 ````
 - Create a Ray Serve cluster using the manifest
 ````
