@@ -26,32 +26,33 @@ more coherent and accurate responses.
 
 - **Evaluation Dataset Generation**: Provides instructions for generating an evaluation dataset tailored for assessing
 RAG pipelines. This component is crucial for developers looking to benchmark and validate their implementations 
-against standardized metrics such as:```Contextual Precision, Faithfulness, Contextual Recall and 
-Answer Relevancy.```
+against standardized metrics such as __Contextual Precision, Faithfulness, Contextual Recall, and 
+Answer Relevancy.__
 
 - **RAG Pipeline Evaluation**: Outlines a methodology for evaluating RAG pipelines using the DeepEval library and 
 a pre-generated evaluation dataset. This approach allows for a detailed assessment of a pipeline's performance, 
-offering insights into its efficiency based on the __Contextual Precision, Faithfulness, Contextual Recall and
+offering insights into its efficiency based on __Contextual Precision, Faithfulness, Contextual Recall, and
   Answer Relevancy__ metrics.
 
-This repository serves as a practical resource for developers and researchers aiming to advance their understanding 
+This repository is a practical resource for developers and researchers aiming to advance their understanding 
 and application of retrieval-augmented generation techniques. Whether you're looking to enhance an existing project 
 or embark on a new one, the **Improved RAG Starter Pack** provides the tools and knowledge needed to __build, evaluate,
 and improve__ your RAG systems and applications.
 
 ### Starter Pack Directory Structure
 To run all the examples in the Starter Pack, please execute the tasks following the numeric order of the directory
-structure. __Each directory contains a README.md file with the instructions on how to use its content.__
-
-├── __01-PGVector (START HERE)__  
-├── __02-KB-Documents__  
+structure. __Each directory contains a README.md file with instructions on how to use its content.__
+```
+├── 01-PGVector (START HERE)  
+├── 02-KB-Documents  
 │   └── NASA  
-├── __03-Document_ingestion__  
-├── __04-RAG_Variants__  
+├── 03-Document_ingestion  
+├── 04-RAG_Variants  
 │   ├── 01-Simple_Retrieval  
 │   ├── 02-Sentence_Window_Retrieval  
 │   └── 03-Auto_Merging_Retrieval  
-├── __05-RAG_Dataset_Generation__  
-│   ├── LlamaIndex_generation  
+├── 05-RAG_Dataset_Generation  
+│   └── LlamaIndex_generation  
 │       └── qa_datasets  
-├── __06-RAG_System_Evaluation__  
+└── 06-RAG_System_Evaluation  
+```
