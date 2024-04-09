@@ -1,7 +1,7 @@
 # Improved RAG Starter Pack
 
 The **Improved RAG Starter Pack** offers a comprehensive suite of Python scripts designed for enthusiasts and 
-researchers in the domain of machine learning, specifically focusing on Retrieval-Augmented Generation (RAG) pipelines.
+professionals in machine learning, specifically focusing on Retrieval-Augmented Generation (RAG) pipelines.
 This repository is a treasure trove for those looking to delve into advanced natural language processing techniques, 
 leveraging the power of __[LlamaIndex](https://www.llamaindex.ai/open-source) and 
 [PGVector](https://github.com/pgvector/pgvector)__ for enhanced performance in question-answering systems. 
