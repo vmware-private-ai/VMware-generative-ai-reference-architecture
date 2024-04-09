@@ -21,8 +21,10 @@ scripts to set a Ray cluster that serves the Falcon LLMs via [vLLM](https://gith
 [Ray Serve](https://docs.ray.io/en/latest/serve/index.html) application. The Ray cluster gets deployed on Tanzu Kubernetes using
 [Kuberay](https://github.com/ray-project/kuberay).
 - We also include __Starter Packs__ which provide code examples about the implementation of the following use cases:
-  - [Retrieval-augmented generation (RAG)](https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/tree/main/Starter-Pack/RAG)
-  - [AI coding assistance (via StarCoder)](https://github.com/vmware-ai-labs/VMware-generative-ai-reference-architecture/tree/main/Starter-Pack/SafeCoder)
+  - __Intro to RAG (retrieval augmented generation with LangChain and Gradio)__
+  - __AI coding assistance via StarCoder (Code_Assistant)__
+  - __Improved RAG (via LlamaIndex + PGVector + DeepEval)__
+  
 
 
 ## Contributing
