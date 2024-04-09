@@ -9,7 +9,7 @@ leveraging the power of __[LlamaIndex](https://www.llamaindex.ai/open-source) an
 ### Here's what it covers:
 
 - **E-Books Ingestion into PGVector DB**: Demonstrates how to ingest a collection of e-books on NASA's history into a 
-PGVector database. This process enriches Language Learning Models (LLMs) by providing a robust foundation for 
+PGVector database. This process enriches Large Language Models (LLMs) by providing a grounded foundation for 
 answering questions related to NASA's institutional history and achievements in space exploration.
 
 - **Standard RAG Pipeline + re-ranker**: Implements a standard RAG pipeline using LlamaIndex, incorporating a
