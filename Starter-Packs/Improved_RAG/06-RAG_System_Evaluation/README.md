@@ -19,7 +19,7 @@ how relevant the actual output of your LLM application is compared to the provid
 relevancy metric is a self-explaining LLM-Eval, meaning it outputs a reason for its metric score.
 
 
-- [Faithfulness] (https://docs.confident-ai.com/docs/metrics-faithfulness). The faithfulness metric measures the quality of your RAG pipeline's generator by evaluating whether the actual output factually aligns with the contents of your retrieval context.
+- [Faithfulness](https://docs.confident-ai.com/docs/metrics-faithfulness). The faithfulness metric measures the quality of your RAG pipeline's generator by evaluating whether the actual output factually aligns with the contents of your retrieval context.
 Deepeval's faithfulness metric is a self-explaining LLM-Eval, which outputs a reason for its metric score. 
 
 
