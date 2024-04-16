@@ -15,7 +15,7 @@ Python scripts of this Starter Pack.__
 - ACID compliance, point-in-time recovery, JOINs, and all features of Postgres
 
 ## Running PGVector
-Please run the `run_pgvector.sh` script to launch a PGVector instance using Docker Compose. The 
-`docker-compose.yaml` file defines the PostgreSQL configuration which you can customize according to 
+Please from a terminal move to this directory and run the `sudo docker compose up -d` script to launch a PGVector instance using Docker Compose. The 
+`docker-compose.yaml` file defines the PostgreSQL configuration, which you can customize according to 
 your preferences.
 
