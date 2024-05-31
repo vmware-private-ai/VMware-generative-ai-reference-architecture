@@ -6,7 +6,7 @@
 
 - First you need to have a Kubernetes (K8s) cluster up and running.
 - The K8s cluster must be equipped with NVIDIA GPUs with compute capabilities >= 7.0
-- If you're using VMware Tanzu Kubernetes, you can check this documentation to learn <br> how to enable [GPUs on Tanzu Kubbernetes](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.6/vmware-tanzu-kubernetes-grid-16/GUID-tanzu-k8s-clusters-hardware.html).
+- If you're using VMware Tanzu Kubernetes, you can check this documentation to learn <br> how to enable [GPUs on Tanzu Kubernetes](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.6/vmware-tanzu-kubernetes-grid-16/GUID-tanzu-k8s-clusters-hardware.html).
 - The AnyScale team provides comprehensive documentation about Ray Serve and how to deploy it K8s<br>
 using Kuberay. Follow the [Ray Serve](https://docs.ray.io/en/latest/serve/index.html) documentation to learn how to customize<br>the vLLM service deployment on Ray Serve beyond the scope of this guide.
 
