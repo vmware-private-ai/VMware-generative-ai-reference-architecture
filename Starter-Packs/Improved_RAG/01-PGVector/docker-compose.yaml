@@ -1,6 +1,6 @@
 services:
   db:
-    image: harbor-repo.vmware.com/dockerhub-proxy-cache/pgvector/pgvector:pg12
+    image: pgvector/pgvector:pg12
     ports:
       - 5432:5432
     restart: always
