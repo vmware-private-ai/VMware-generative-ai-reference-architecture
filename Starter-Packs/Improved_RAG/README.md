@@ -2,45 +2,45 @@
 
 The **Improved RAG Starter Pack** offers a comprehensive suite of Python scripts designed for enthusiasts and 
 professionals in machine learning, specifically focusing on Retrieval-Augmented Generation (RAG) pipelines.
-This repository provides step-by-step guidance on how to build a RAG system, starting from the document ingestion,
+This repository provides step-by-step guidance on how to build a RAG system, starting from document ingestion,
 vector (text embeddings) index population, and standard RAG pipeline implementation, all the way to improvements over
 the standard RAG retrieval processes. 
 
 The technologies we used to implement this Starter Pack include the following:
 
 - [The latest NVIDIA NIM microservices](https://docs.nvidia.com/nim/index.html) that provide production-grade runtimes for 
-different types of ML models (embeddings, reranking, text generation, etc) that include on-going security updates.
-- [PGVector extension on PostgreSQL (v12)](https://docs.vmware.com/en/VMware-Postgres/15.7/vmware-postgres/installing.html) which 
+different types of ML models (embeddings, reranking, text generation, etc) that include ongoing security updates.
+- [PGVector extension on PostgreSQL (v12)](https://docs.vmware.com/en/VMware-Postgres/15.7/vmware-postgres/installing.html), which 
 provides a robust and scalable vector database engine required to augment large language models (LLM) generation
 capabilities. 
-- [LlamaIndex (v0.11.x),](https://github.com/run-llama/llama_index) an orchestration and data processing framework
+- [LlamaIndex (v0.11.1),](https://github.com/run-llama/llama_index) an orchestration and data processing framework
 that facilitates the constructions of LLM-driven applications.
-- [vLLM (v.0.5),](https://github.com/vllm-project/vllm) a powerful, fast and easy-to-use LLM inference server.
-- [DeepEval (v1.1.x),](https://docs.confident-ai.com/docs/getting-started) an open-source evaluation framework for LLMs and 
+- [vLLM (v.0.5.5),](https://github.com/vllm-project/vllm) a powerful, fast and easy-to-use LLM inference server.
+- [DeepEval (v1.1.2),](https://docs.confident-ai.com/docs/getting-started) an open-source evaluation framework for LLMs and 
 LLM-driven applications such as RAG pipelines.
 - [Meta Llama-3 models.](https://ai.meta.com/blog/meta-llama-3/) State-of-the-art open source LLMs. 
 
 ### Covered Topics:
 
 The Improved RAG Starter Pack will guide you through the phases required to build robust RAG pipelines that allow
-your LLM-driven applications improve the accuracy and relevancy of its outputs. We also dedicate a good deal of 
+your LLM-driven applications to improve the accuracy and relevancy of their outputs. We also dedicate a good deal of 
 attention to the evaluation process of RAG pipelines via the use of metrics such as 
 Answer Relevancy, Contextual Precision, and more.
 
 ### Repository Structure
 
-- __NVIDIA NIMs and vLLM services setup (directory 00)__: Provide the steps necesary to launch the NVIDIA NIM and vLLM services 
+- __NVIDIA NIMs and vLLM services setup (directory 00)__: Provide the steps necessary to launch the NVIDIA NIM and vLLM services 
 required to power the different RAG architectures we implement in this repository,
 
 
-- __Document Ingestion into PGVector DB (directories 01, 02 and 03)__: Exemplify how to ingest a collection of
+- __Document Ingestion into PGVector DB (directories 01, 02, and 03)__: Exemplify how to ingest a collection of
 documents that constitute a knowledge base (e-books on NASA's history in this case) into a vector (PGVector) database. 
 Vector databases enrich LLMs' completions by providing a grounded foundation for LLMs to generate accurate and factual
 answers to users' queries related to specific knowledge domains.
 
 
 - __Evaluation Dataset Generation (directory 04)__: Provides instructions for automatically generating an evaluation
-dataset tailored for assessing RAG pipelines. This component is crucial for developers looking to assess
+dataset tailored for assessing RAG pipelines. This component is crucial for developers looking to evaluate
 and calibrate their RAG implementations against standardized metrics listed further down this document. 
 
 
@@ -65,10 +65,10 @@ into its efficiency based on the __Contextual Precision, Faithfulness, Contextua
 Answer Relevancy__ metrics.
 
 
-- __Starter Pack configuration (directory 07)__: Stores the `improved_rag_config.yaml` configuration file that is used by
+- __Starter Pack configuration (directory 07)__: Stores the `improved_rag_config.yaml` configuration file used by
 the Jupyter Notebooks and Python scripts in the Starter Pack to retrieve their configuration. It also stores the 
 `impv_rag.yaml` file that can be used by 
-[__Conda__](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to install all the Python 
+[__Conda__](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to install all the Python
 packages required to run the Jupyter Notebooks included in this Starter Pack.
 
 
