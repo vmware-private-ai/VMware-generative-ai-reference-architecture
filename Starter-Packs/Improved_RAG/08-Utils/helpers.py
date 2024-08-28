@@ -164,7 +164,7 @@ class CustomSynthesizerModel(DeepEvalBaseLLM):
                 #chat_template=llm_cfg.chat_template,
                 is_chat_model=True,
         )
-        self.model_name = llm_cfg.llm
+        self.model_name = llm_cfg.model
 
     def load_model(self):
         return self.model
@@ -194,7 +194,7 @@ class CustomSynthesizerModel(DeepEvalBaseLLM):
 
 class CustomEmbeddingModel(DeepEvalBaseEmbeddingModel):
     def __init__(self, embedding_cfg):
-        self.model_name = embedding_cfg.model_name
+        self.model_name = embedding_cfg.model
         self.embedder = NVIDIAEmbedding(
                 base_url=embedding_cfg.api_base,
                 model=embedding_cfg.model,
