@@ -13,7 +13,7 @@ different types of ML models (embeddings, reranking, text generation, etc) that 
 - [PGVector extension on PostgreSQL (v12)](https://docs.vmware.com/en/VMware-Postgres/15.7/vmware-postgres/installing.html), which 
 provides a robust and scalable vector database engine required to augment large language models (LLM) generation
 capabilities. 
-- [LlamaIndex (v0.11.1),](https://github.com/run-llama/llama_index) an orchestration and data processing framework
+- [LlamaIndex (v0.11.1),](https://github.com/run-llama/llama_index) is an orchestration and data processing framework
 that facilitates the constructions of LLM-driven applications.
 - [vLLM (v.0.5.5),](https://github.com/vllm-project/vllm) a powerful, fast and easy-to-use LLM inference server.
 - [DeepEval (v1.1.2),](https://docs.confident-ai.com/docs/getting-started) an open-source evaluation framework for LLMs and 
