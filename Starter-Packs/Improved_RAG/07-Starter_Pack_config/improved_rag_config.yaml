@@ -1,0 +1,129 @@
+# Language models configuration
+ml_models:
+
+  # LLM NIM (or vLLM)
+  llm_generator:
+    model: meta/llama3-8b-instruct
+    api_base: http://lab-server-vm:8030/v1
+    api_key: NONE
+    temperature: 0
+    max_tokens: 1024
+    repetition_penalty: 1.1
+
+  # Text embedding NIM
+  embedder:
+    model: nvidia/nv-embedqa-e5-v5
+    api_base: http://lab-server-vm:8000/v1
+    batch_size: 16
+
+  # Text re-ranking NIM
+  re_ranker:
+    model: nvidia/nv-rerankqa-mistral-4b-v3
+    api_base: http://lab-server-vm:8010/v1
+    rerank_top_n: 4
+
+# PGVector/Postgres configuration
+postgresql:
+  port: 5432
+  db_host: pgvector-vm
+  user: demouser
+  password: demopasswd
+  default_db: postgres
+  vector_db: postgres
+  tables:
+    std_rag: NASA_STD_RAG
+    sentence_window: NASA_SENTENCE_WINDOW
+    auto_merging: NASA_AUTO_MERGING
+  pgvector:
+    hybrid_search: True
+    pgvector_kwargs: "{'hnsw_ef_search': 256}"
+    sim_top_k: 10
+
+# Data files' names and paths
+file_paths:
+  kb_doc_dir: "../02-KB-Documents/NASA"
+  rag_base_path: "../../05-RAG_Variants/"
+  common_suffix: "responses/current"
+  simple_rag: "01-Standard_RAG_with_Reranking/"
+  sentence_window_rag: "02-Sentence_Window_Retrieval/"
+  auto_merging_retrieval: "03-Auto_Merging_Retrieval/"
+
+# DeepEval data files locations
+data_files:
+
+  # RAG evaluation datasets
+  test_sets:
+    base_path: ../../04-RAG_Dataset_Generation/
+    active_set: deep_eval
+    sample_size: 40
+
+    deep_eval:
+      archive: DeepEval/archive/
+      current: DeepEval/current/
+
+# LLamaIndex RAG variants' configuration
+llama_index:
+  num_workers: 1
+  chunk_size: 512
+  chunk_overlap: 20
+  min_doc_length: 40
+
+  # Standard RAG
+  std_rag:
+    response_mode: tree_summarize
+
+  # Sentence window retrieval RAG
+  sentence_window:
+    window_size: 3
+    win_mdata_key: window
+    orig_mdata_key: original_text
+    response_mode: tree_summarize
+
+  # Auto merging RAG
+  auto_merge:
+    response_mode: tree_summarize
+
+# DeepEval setup for evaluation and dataset generation
+deep_eval:
+
+  # Judge (evaluator) LLM service configuration
+  osrc_judge_llm:
+    model: meta-llama/Meta-Llama-3-70B-Instruct
+    api_base: http://lab-server-vm:8020/v1
+    api_key: NONE
+    temperature: 0
+    max_tokens: 3072
+    repetition_penalty: 1
+
+  decision_threshold: 0.5
+  num_eval_samples: 40
+  include_reason: True
+  async_mode: False
+
+  # Dataset generation settings
+  max_goldens_per_doc: 5
+  include_expected_output: True
+  chunk_size: 512
+  chunk_overlap: 20
+  num_evolutions: 1
+  current_files_dir: current
+  archive_files_dir: archive
+  kb_doc_dir: "../../02-KB-Documents/NASA"
+
+  # Synthesizer LLM Settings (vLLM)
+  synth_llm_cfg:
+    api_base: http://lab-server-vm:8020/v1
+    api_key: NONE
+    model: meta-llama/Meta-Llama-3-70B-Instruct
+    temperature: 0
+    max_tokens: 2048
+    repetition_penalty: 1
+    async_mode: False
+
+  # Synthesizer Embedder Settings (NIM)
+  embedding_cfg:
+    api_base: http://lab-server-vm:8000/v1
+    api_key: NONE
+    model: nvidia/nv-embedqa-e5-v5
+    batch_size: 16
+

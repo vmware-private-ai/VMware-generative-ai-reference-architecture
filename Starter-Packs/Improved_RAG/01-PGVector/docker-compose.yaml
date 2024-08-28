@@ -1,0 +1,12 @@
+services:
+  db:
+    image: pgvector/pgvector:pg12
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=demouser
+      - POSTGRES_PASSWORD=demopasswd
+    volumes:
+      - ./data:/var/lib/postgresql/data
