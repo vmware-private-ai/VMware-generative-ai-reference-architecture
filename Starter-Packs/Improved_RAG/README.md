@@ -28,6 +28,26 @@ attention to the evaluation process of RAG pipelines via the use of metrics such
 Answer Relevancy, Contextual Precision, and more.
 
 ### Repository Structure
+To run all the examples in the Starter Pack, **please execute the tasks following the numeric order of the directory
+structure**. Each directory contains a README.md file with instructions on how to use its content.
+
+```
+Directory tree:
+
+┌── 00-Setup-NIM-and-vLLM-Services (START HERE)
+├── 01-PGVector  
+├── 02-KB-Documents   
+├── 03-Document_ingestion  
+├── 04-RAG_Dataset_Generation  
+├── 05-RAG_Variants  
+│   ├── 01-Standard_RAG_with_Reranking  
+│   ├── 02-Sentence_Window_Retrieval  
+│   └── 03-Auto_Merging_Retrieval  
+├── 06-RAG_System_Evaluation
+├── 07-Starter_Pack_config
+└── 08-Utils
+```
+In more detail...
 
 - __NVIDIA NIMs and vLLM services setup (directory 00)__: Provide the steps necessary to launch the NVIDIA NIM and vLLM services 
 required to power the different RAG architectures we implement in this repository,
@@ -75,22 +95,4 @@ packages required to run the Jupyter Notebooks included in this Starter Pack.
 - __Utils (directory 08)__: Stores the `helpers.py` script containing the definition of multiple classes and helper
 functions utilized by the Jupyter Notebooks that constitute this Starter Pack.
 
-### Starter Pack Directory Structure
-To run all the examples in the Starter Pack, **please execute the tasks following the numeric order of the directory
-structure**. Each directory contains a README.md file with instructions on how to use its content.
-```
-Improved RAG Starter Pack Directory Structure:
 
-┌── 00-Setup-NIM-and-vLLM-Services (START HERE)
-├── 01-PGVector  
-├── 02-KB-Documents   
-├── 03-Document_ingestion  
-├── 04-RAG_Dataset_Generation  
-├── 05-RAG_Variants  
-│   ├── 01-Standard_RAG_with_Reranking  
-│   ├── 02-Sentence_Window_Retrieval  
-│   └── 03-Auto_Merging_Retrieval  
-├── 06-RAG_System_Evaluation
-├── 07-Starter_Pack_config
-└── 08-Utils
-```
