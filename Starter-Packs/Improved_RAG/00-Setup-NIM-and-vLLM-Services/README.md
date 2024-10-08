@@ -8,7 +8,7 @@ required to implement retrieval augmented generation (RAG) pipelines. These serv
 - __Embedding of text strings__ (queries, sentences, etc.), and 
 - __Re-ranking of text passages__ according to their semantic similarity or relevance to a query. 
 
-I addition to NIMs, you'll need vLLM to run the 
+In addition to NIMs, you'll need vLLM to run the 
 __[meta-llama/Meta-Llama-3-70B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct)__ 
 LLM to leverage vLLM's __[guided JSON](https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html)__
 feature that is required to use an LLM as a _"judge"_ for 
@@ -17,7 +17,7 @@ RAG pipelines that get covered in this Starter Pack.
 
 Notice that you'll need multiple GPU resources to run the different NIMs as indicated below. In our 
 tests __we used a VM with 8 x H100 (80GB) GPUs__ but you can use other Nvidia GPUs like A100, L40s, 
-A10G and L4 as indicated in each NIM's support matrix.
+A10G and L4, as indicated in each NIM's support matrix.
 
 Finally, we provide pointers to the ___Getting Started___ documentation for each NIM. Make sure you follow those
 documents to understand how to authenticate at __Nvidia's NCG services__ so you can pull the NIM containers. Once you have 
@@ -30,12 +30,12 @@ authenticated and generated your `NGC_API_KEY`, __please plug it into `line 2` o
 [NIM's documentation](https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/index.html) includes a 
 [Getting Started](https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/getting-started.html) 
 section that provides all the steps required to get access to the NIM containers and how to launch them. In this
-directory we provide the __`embedder_launch.sh`__ script that contains the environment variable definitions
+directory, we provide the __`embedder_launch.sh`__ script that contains the environment variable definitions
 and the `docker run` command line required to launch the NIM container. There are a 
 few things to consider:
   - When using the __`embedder_launch.sh`__ script, make sure you adjust the port number assigned to the
 embedding service. In this script, the service becomes available at `port 8000` by default.
-  - In this Starter Pack we use the `NV-EmbedQA-E5-v5` model which requires one of the GPUs indicated
+  - In this Starter Pack, we use the `NV-EmbedQA-E5-v5` model, which requires one of the GPUs indicated
 in the [NV-EmbedQA-E5-v5's supported hardware](https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/support-matrix.html#supported-hardware)
 section.
   - The script runs the container on the 4th GPU device by default (` --gpus '"device=3"'`).
@@ -73,14 +73,14 @@ section.
   - Notice the `Meta-Llama3-8b-instruct` model supports a __maximum context window of 8192 tokens.__
 
 
-- __Running `Meta-Llama-3-70B-Instruct` on a vLLM container__. A crucial aspect of RAG pipelines development
+- __Running `Meta-Llama-3-70B-Instruct` on a vLLM container__. A crucial aspect of RAG pipeline development
 is the evaluation stage. In this Starter Pack we use __[DeepEval](https://docs.confident-ai.com/docs/getting-started)__
 which provides a wealth of features to automate the __[generation of synthetic evaluation sets](https://docs.confident-ai.com/docs/evaluation-datasets-synthetic-data)__
 and evaluation processes via an __[extensive collection of evaluation metrics](https://docs.confident-ai.com/docs/metrics-introduction).__ DeepEval
-requires a powerful LLM service to generate synthetic evaluation sets and to act as evaluator ("judge") responsible for
-gauging every metric used to asses a RAG pipeline. One of the requirements for an LLM to act as a judge is the ability
-to generate verdicts in the form of JSON objects. This is not an easy task as very few closed-source LLMs can do it
-consistently (GPT-4 or GPT-4o for example). In the open-source LLM world, after testing lots of models, __only 
+requires a powerful LLM service to generate synthetic evaluation sets and to act as an evaluator ("judge") responsible for
+gauging every metric used to assess a RAG pipeline. One of the requirements for an LLM to act as a judge is the ability
+to generate verdicts in the form of JSON objects. This task is not easy, as very few closed-source LLMs can do it
+consistently (GPT-4 or GPT-4o, for example). In the open-source LLM world, after testing lots of models, __only 
 Llama-3-70b-Instruct__ running on vLLM in ___guided-JSON mode___ was capable of doing the job consistently. Please consider
 the following when running the __`run_vllm_llama3-70b-Instruct.sh`__ script:
   - vLLM runs in a container exposing an ___OpenAI-like API service___ on `port 8020`.
