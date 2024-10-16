@@ -97,7 +97,7 @@ When running the four containers (3 NIMs + 1 vLLM) simultaneously in the same VM
 ```
 vmuser@h100-vm:~$ docker ps
 CONTAINER ID   IMAGE                                                          COMMAND                  CREATED        STATUS        PORTS                                       NAMES
-4e3de113d6e1   dockerhub.usw5.packages.broadcom.com/vllm/vllm-openai:latest   "python3 -m vllm.ent…"   15 hours ago   Up 15 hours   0.0.0.0:8020->8000/tcp, :::8020->8000/tcp   vllm_llama3-70b-Instruct
+4e3de113d6e1   vllm/vllm-openai:latest                                        "python3 -m vllm.ent…"   15 hours ago   Up 15 hours   0.0.0.0:8020->8000/tcp, :::8020->8000/tcp   vllm_llama3-70b-Instruct
 ef35617e3bf0   nvcr.io/nim/meta/llama3-8b-instruct:1.0.3                      "/opt/nvidia/nvidia_…"   33 hours ago   Up 33 hours   0.0.0.0:8030->8000/tcp, :::8030->8000/tcp   Llama3-8B-Instruct
 b630d6e1851c   nvcr.io/nim/nvidia/nv-rerankqa-mistral-4b-v3:1.0.0             "/opt/nvidia/nvidia_…"   33 hours ago   Up 33 hours   0.0.0.0:8010->8000/tcp, :::8010->8000/tcp   nv-rerankqa-mistral-4b-v3
 bfcd819fd514   nvcr.io/nim/nvidia/nv-embedqa-e5-v5:1.0.0                      "/opt/nvidia/nvidia_…"   33 hours ago   Up 33 hours   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp   nv-embedqa-e5-v5
