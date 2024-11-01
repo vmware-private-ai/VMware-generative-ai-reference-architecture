@@ -20,10 +20,11 @@ the [Falcon LLMs](https://falconllm.tii.ae/) on a custom dataset to teach the mo
 scripts to set a Ray cluster that serves the Falcon LLMs via [vLLM](https://github.com/vllm-project/vllm) running as a 
 [Ray Serve](https://docs.ray.io/en/latest/serve/index.html) application. The Ray cluster gets deployed on Tanzu Kubernetes using
 [Kuberay](https://github.com/ray-project/kuberay).
-- We also include __Starter Packs__ which provide code examples about the implementation of the following use cases:
-  - __Intro to RAG (retrieval augmented generation with LangChain and Gradio)__
-  - __AI coding assistance via StarCoder (Code_Assistant)__
-  - __Improved RAG (via LlamaIndex + PGVector + DeepEval)__
+- We also include __Starter Packs__, which provide code examples about the implementation of the following use cases:
+  - __Improved RAG v2.0.0 (powered by NVIDIA NIMs, vLLM, LlamaIndex, PGVector, and DeepEval)__
+  - Intro to RAG (retrieval augmented generation with LangChain and Gradio)
+  - AI coding assistance via StarCoder (Code_Assistant)
+ 
   
 
 

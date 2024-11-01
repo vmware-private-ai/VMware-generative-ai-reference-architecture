@@ -1,5 +1,3 @@
-#!/usr/bin/bash -v
-
 # Download NASA's history books from https://www.nasa.gov/history/explore-nasas-history
 wget https://www.nasa.gov/wp-content/uploads/2020/06/promise-denied_tagged.pdf  -P ./NASA
 wget https://www.nasa.gov/wp-content/uploads/2024/01/discovery-program-ebook.pdf  -P NASA
